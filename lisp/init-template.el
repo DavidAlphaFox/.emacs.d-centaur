@@ -40,11 +40,12 @@
   :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
          ("M-*" . tempel-insert)
          :map tempel-map
+         ("<backtab>" . tempel-previous)
          ("TAB" . tempel-next))
   :hook (after-init . global-tempel-abbrev-mode)
   :init
-  ;; Setup completion at point
   (defun tempel-setup-capf ()
+    "Setup completion at point."
     (setq-local completion-at-point-functions
                 (cons #'tempel-expand completion-at-point-functions)))
 
@@ -57,6 +58,7 @@
 
 ;; Use eglot as inline template expander
 (use-package eglot-tempel
+  :after eglot
   :diminish
   :hook (after-init . eglot-tempel-mode))
 
