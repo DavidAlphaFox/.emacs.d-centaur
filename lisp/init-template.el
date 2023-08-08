@@ -38,7 +38,9 @@
   ;; (tempel-trigger-prefix "<")
 
   :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
-         ("M-*" . tempel-insert))
+         ("M-*" . tempel-insert)
+         :map tempel-map
+         ("TAB" . tempel-next))
   :hook (after-init . global-tempel-abbrev-mode)
   :init
   ;; Setup completion at point
